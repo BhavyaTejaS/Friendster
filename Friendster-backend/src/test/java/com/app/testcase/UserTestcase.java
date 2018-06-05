@@ -54,7 +54,7 @@ public class UserTestcase{
 		user.setPassword("srihari");
 		user.setPhonenumber("999789756");
 		
-		userDao.registerUser(user);
+		userDao.registration(user);
 		assertEquals(user.getEmail(),user.getEmail());
 		
 	

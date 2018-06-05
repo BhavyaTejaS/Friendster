@@ -9,7 +9,7 @@ import javax.persistence.Table;
 @Table(name="User_DB")
 public class User {
 	@Id
-		private String email;
+		private String email; 
 	@Column(nullable=false)
 		private String password;
 	@Column(nullable=false)
