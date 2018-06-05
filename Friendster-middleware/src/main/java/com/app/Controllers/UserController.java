@@ -28,7 +28,7 @@ public ResponseEntity<?> registration(@RequestBody User user){
     		ErrorClazz errorClazz=new ErrorClazz(2,"Email is already exists.....so enter different email");
     		return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.CONFLICT);
     	}
-             userDao.registration(user);
+             userDao.registerUser(user);
          return new ResponseEntity<Void>(HttpStatus.OK);
 
 }catch(Exception e){

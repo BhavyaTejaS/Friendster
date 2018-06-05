@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="User_Main")
+@Table(name="User_DB")
 public class User {
 	@Id
 		private String email;
@@ -19,8 +19,6 @@ public class User {
 		private String role;
 		@Column(name="online_status")
 		private boolean online;
-
-		
 		public String getEmail() {
 			return email;
 		}
@@ -36,7 +34,7 @@ public class User {
 		public String getFirstname() {
 			return firstname;
 		}
-		public void setFirstrname(String firstname) {
+		public void setFirstname(String firstname) {
 			this.firstname = firstname;
 		}
 		public String getLastname() {
@@ -63,5 +61,7 @@ public class User {
 		public void setOnline(boolean online) {
 			this.online = online;
 		}
-		}
 
+		
+		
+}
