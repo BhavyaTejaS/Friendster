@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+body {
+background-color: powderblue;
+
+}
+
+</style>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="http://localhost:8087/Friendster-client/resources/css/navbar.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
      
    
@@ -17,7 +25,7 @@
 </head>
 <body ng-app="app">
 <header>
-            <nav class="navbar navbar-inverse">
+            <nav class="navbar navbar-inverse" id="nav_bar">
             
            <div class="container-fluid">
 		<button type="button" class="navbar-toggle collapsed" 
@@ -28,13 +36,13 @@
         <span class="icon-bar"></span>
       </button>
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#/"><img src="resources/images/firendster.jpg" width="130" height="30"></a>
+                    <a class="navbar-brand" href="#/"><img src="resources/images/friend.png" width="130" height="30"></a>
                 </div>
 <div class="collapse navbar-collapse" id="collapse-example">
-                <ul class="nav navbar-nav ">
+                <ul class="nav navbar-nav " id="links">
            <li><a href="#/home">Home</a></li>
            <li><a href="#/updateprofile" ng-show="loggedInUser.firstname!=undefined">Welcome {{loggedInUser.firstname}} &nbsp; {{loggedInUser.lastname}}</a></li>
-           <li><a href="#" ng-click="logout()" ng-show="loggedInUser.firstname!=undefined">Sign out</a></li>
+           <li><a href="" ng-click="logout()" ng-show="loggedInUser.firstname!=undefined">Sign out</a></li>
            <li><a href="#/registration" ng-show="loggedInUser.firstname==undefined">Sign Up</a></li>
             <li><a href="#/login" ng-show="loggedInUser.firstname==undefined">Sign In</a></li>
           
@@ -64,4 +72,3 @@
 
 
 </html>
-

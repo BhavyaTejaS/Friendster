@@ -2,21 +2,28 @@
 <!-- invalid credentials ...invalid email /password -->
 <span style="color:red">{{error.message}}</span>
 {{message}}
-<table>
+<link href='<c:url value="/resources/css/login.css"></c:url>' rel="stylesheet">
+
+<body>
+	<h3 align="center">Login Page</h3>
+	<div id="login-box">
+	
+<table cellspacing="25">
 <tr>
-<td>Enter email </td>
+<td>Enter Email:</td>
 <td>
 <input type="email" ng-model="user.email">
 </td>
 </tr>
 
 <tr>
-<td>Enter password</td>
+<td>Enter Password:</td>
 <td><input type="password" ng-model="user.password"></td>
 </tr>
 
 <tr>
-<td><input type="submit" value="login" ng-click="login(user)"></td>
+<td><input type="submit" value="Login" ng-click="login(user)"></td>
 </tr>
 
 </table>
+</body>
