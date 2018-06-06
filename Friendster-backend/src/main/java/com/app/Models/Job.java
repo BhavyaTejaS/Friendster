@@ -19,7 +19,9 @@ private String skillsRequried;
 private String location;
 private String salary;
 private String companyName;
+private String yrsofExp;
 private Date postedOn;
+private boolean active;//admin the updates field active false/true other users cannot view the job with value as false
 public int getId() {
 	return id;
 }
@@ -67,6 +69,18 @@ public Date getPostedOn() {
 }
 public void setPostedOn(Date postedOn) {
 	this.postedOn = postedOn;
+}
+public String getYrsofExp() {
+	return yrsofExp;
+}
+public void setYrsofExp(String yrsofExp) {
+	this.yrsofExp = yrsofExp;
+}
+public boolean isActive() {
+	return active;
+}
+public void setActive(boolean active) {
+	this.active = active;
 }
 
 

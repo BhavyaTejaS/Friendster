@@ -19,6 +19,12 @@ app.config(function($routeProvider){
 		controller:'UserCtrl',
 		templateUrl:'view/updateprofile.html' //user object in updateprofile.html
 	})
+	
+	.when('/addjob',{
+		controller:'JobCtrl',
+		templateUrl:'view/jobform.html' //user object in jobform.html
+	})
+	
 	.otherwise({
 		templateUrl:'view/home.html'
 	})
@@ -28,6 +34,7 @@ app.run(function($rootScope,$cookieStore,UserService,$location){
 		$rootScope.loggedInUser=$cookieStore.get('loggedInUser')
 		
 		$rootScope.logout=function(){
+		alert('Entering logout')
 		UserService.logout().then(function(response){
 			$rootScope.message="Loggedout successfully..."
 				delete $rootScope.loggedInUser

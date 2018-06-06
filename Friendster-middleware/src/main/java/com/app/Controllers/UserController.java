@@ -86,7 +86,7 @@ private UserDao userDao;
 		{
 			ErrorClazz errorClazz=new ErrorClazz(6,"please login..");
 			//In frontend
-			//$scope.error=response.data
+	 		//$scope.error=response.data
 			//$scope.error={errorCode:6,message:"please login.."}
 			//login.html {{error.message}}
 			return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
