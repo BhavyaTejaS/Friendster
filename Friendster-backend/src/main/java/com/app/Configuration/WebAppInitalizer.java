@@ -1,4 +1,4 @@
-/*package com.app.Configuration;
+package com.app.Configuration;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -29,4 +29,4 @@ public class WebAppInitalizer extends AbstractAnnotationConfigDispatcherServletI
 		return new String[]{"/"};
 	}
 
-}*/
+}

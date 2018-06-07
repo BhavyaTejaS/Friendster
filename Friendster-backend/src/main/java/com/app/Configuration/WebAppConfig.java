@@ -1,4 +1,4 @@
-/*package com.app.Configuration;
+package com.app.Configuration;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -12,4 +12,4 @@ public class WebAppConfig extends WebMvcConfigurerAdapter{
 public WebAppConfig(){
 	System.out.println("WebAppConfig class is instantiated");
 }
-}*/
+}
