@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.app.Models.Job;
-@Repository
+@Repository("jobDao")
 @Transactional
 public class JobDaoImpl implements JobDao {
 	@Autowired

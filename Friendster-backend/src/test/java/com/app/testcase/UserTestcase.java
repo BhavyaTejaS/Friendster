@@ -13,7 +13,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import com.app.DAO.UserDao;
 import com.app.Models.User;
 
-public class UserTestcase{
+public class UserTestcase {
 
 	@Autowired
 	static AnnotationConfigApplicationContext context;
@@ -38,11 +38,10 @@ public class UserTestcase{
 		userDao =  (UserDao) context.getBean("userDao");
 		
 			
-	
 	}
 	@Ignore
 	@Test
-	public void createUserTestCase()
+	public void createProductTestCase()
 	{
 		User user=new User();
 		
@@ -53,29 +52,32 @@ public class UserTestcase{
 		user.setEmail("srihari@gmail.com");
 		user.setPassword("srihari");
 		user.setPhonenumber("999789756");
+		user.setRole("Student");
 		
 		userDao.registration(user);
 		assertEquals(user.getEmail(),user.getEmail());
 		
 	
 	}
-	
+
 	@Ignore
+	
 	@Test
 	public void uniqueEmailIdTest()
 	{
 		
 		User user=new User();
-user.setEmail("niit.s@abc.com");
+user.setEmail("srinias@gmail.com");
 		boolean status=userDao.isEmailUnique(user.getEmail());
 		
 		assertEquals("unique email id failure", false, status);
 	}
+
 	@Test
 	public void getUserDetails()
 	{
 		
-		String userEmail = "srihari@gmail.com";
+		String userEmail = "admin@abc.com";
 
                user=new User();
 

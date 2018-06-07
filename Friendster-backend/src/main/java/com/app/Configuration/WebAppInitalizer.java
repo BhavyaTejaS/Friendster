@@ -1,10 +1,10 @@
-package com.app.Configuration;
+/*package com.app.Configuration;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 //web.xml file
-public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer{
-    public WebAppInitializer(){
+public class WebAppInitalizer extends AbstractAnnotationConfigDispatcherServletInitializer{
+    public WebAppInitalizer(){
     	System.out.println("WebAppInitializer class is loaded...");
     }
 	
@@ -29,5 +29,4 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 		return new String[]{"/"};
 	}
 
-}
-
+}*/

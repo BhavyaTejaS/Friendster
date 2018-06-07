@@ -20,6 +20,11 @@ import com.app.Models.User;
 
 @RestController
 public class JobController {
+	
+	public JobController(){
+		System.out.println("JobController bean is created");
+	}
+	
 	@Autowired
 private JobDao jobDao;
 	@Autowired

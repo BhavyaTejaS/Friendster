@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.app.Models.User;
-@Repository
+@Repository("userDao")
 @Transactional
 public class UserDaoImpl implements UserDao {
 	@Autowired

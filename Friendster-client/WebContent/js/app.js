@@ -15,6 +15,7 @@ app.config(function($routeProvider){
 		controller:'UserCtrl',
 		templateUrl:'view/login.html'
 	})
+	
 	.when('/updateprofile',{
 		controller:'UserCtrl',
 		templateUrl:'view/updateprofile.html' //user object in updateprofile.html
@@ -22,7 +23,7 @@ app.config(function($routeProvider){
 	
 	.when('/addjob',{
 		controller:'JobCtrl',
-		templateUrl:'view/jobform.html' //user object in jobform.html
+		templateUrl:'view/jobform.html' 
 	})
 	
 	.otherwise({
