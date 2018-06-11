@@ -28,13 +28,22 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#/"><img src="resources/images/friend.png" width="130" height="30"></a>
+                <div class="navbar-header" id="img">
+                    <a class="navbar-brand" href="#/">
+                    <a href="resources/images/friend.png" target="_blank">
+<img src="resources/images/friend.png" width="130" height="50" style="border:2px solid black">
+</a>
                 </div>
 <div class="collapse navbar-collapse" id="collapse-example">
                 <ul class="nav navbar-nav " id="links">
            <li><a href="#/home">Home</a></li>
-           <li><a href="#/addjob">Add Job</a></li>
+           <li class="dropdown"><a href="" class="dropdown-toggle"
+            data-toggle="dropdown" ng-show="loggedInUser.firstname!=undefined">Job<b class="caret"></b></a>
+             <ul class="dropdown-menu">
+             <li><a href="#/addjob" ng-show="loggedInUser.role=='ADMIN'">Add Job</a>
+             <li><a href="#/activejobs">Get All Jobs</a></li>
+             <li><a href="#/inactivejobs" ng-show="loggedInUser.role=='ADMIN'">Inactive jobs</a>
+             </ul></li>
            <li><a href="#/updateprofile" ng-show="loggedInUser.firstname!=undefined">Welcome {{loggedInUser.firstname}} &nbsp; {{loggedInUser.lastname}}</a></li>
            <li><a href="" ng-click="logout()" ng-show="loggedInUser.firstname!=undefined">Sign out</a></li>
            <li><a href="#/registration" ng-show="loggedInUser.firstname==undefined">Sign Up</a></li>
@@ -61,10 +70,5 @@
 <script type="text/javascript" src="services/userservice.js"></script>
 <script type="text/javascript" src="controller/jobcontroller.js"></script>
 <script type="text/javascript" src="services/jobservice.js"></script>
-
-
-
-
-
 
 </html>

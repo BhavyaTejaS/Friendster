@@ -1,0 +1,20 @@
+<span style="color:red">{{error.message}}</span>
+<div class="panel panel-info">
+<div class="panel-heading">
+Jobs
+</div>
+<div class="panel-body">
+<ul style="list-style:none">
+<!-- -active Jobs is array of job object -->
+<li ng-repeat="job in inActiveJobs">
+<b> Job Title: </b>{{job.jobTitle}}<br>
+<b>Skills Required: </b>{{job.skillsRequried}}<br>
+<b>Posted On: </b>{{job.postedOn | date:'medium'}}<br>
+<hr>
+
+</li>
+
+</ul>
+
+</div>
+</div>

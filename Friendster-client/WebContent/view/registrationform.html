@@ -1,33 +1,29 @@
 <table>
 	<tr>
-		<td>Enter Email:</td>
-		<td><input type="email" ng-model="user.email"><br><br>
-		
+		<td>Enter email </td>
+		<td><input type="email" ng-model="user.email">
+		<span style="color:red">{{error.message}}</span>
 		</td>
 	</tr>
 
 	<tr>
-		<td>Enter Password:</td>
-		<td><input type="password" ng-model="user.password" required>
-		<br><br></td>
+		<td>Enter password</td>
+		<td><input type="password" ng-model="user.password" required></td>
 	</tr>
 
 	<tr>
-		<td>Enter Firstname:</td>
-		<td><input type="text" ng-model="user.firstname" required><br>
-		<br></td>
+		<td>Enter Firstname</td>
+		<td><input type="text" ng-model="user.firstname" required></td>
 	</tr>
 
 	<tr>
-		<td>Enter Lastname:</td>
-		<td><input type="text" ng-model="user.lastname"><br>
-	<br>	</td>
+		<td>Enter Lastname</td>
+		<td><input type="text" ng-model="user.lastname"></td>
 	</tr>
 
 	<tr>
-		<td>Enter Phonenumber:</td>
-		<td><input type="phonenumber" ng-model="user.phonenumber"><br>
-		<br></td>
+		<td>Enter Phonenumber</td>
+		<td><input type="phonenumber" ng-model="user.phonenumber"></td>
 	</tr>
 
 	<tr>
@@ -46,3 +42,4 @@
     </tr>
     
 </table>
+

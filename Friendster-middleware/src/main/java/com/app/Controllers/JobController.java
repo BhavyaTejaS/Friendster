@@ -1,6 +1,7 @@
 package com.app.Controllers;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -33,7 +34,7 @@ private JobDao jobDao;
 	public ResponseEntity<?> saveJob(@RequestBody Job job,HttpSession session){
 		//Authentication & Authorization
 		//Authentication-who u are?
-		//Authoriztion-role..
+		//Authorization-role..
 		String email=(String)session.getAttribute("email");
 		if(email==null){//not logged in
 			ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
@@ -62,4 +63,34 @@ private JobDao jobDao;
 			return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	@RequestMapping(value="/activejobs",method=RequestMethod.GET)
+	public ResponseEntity<?> getActiveJobs(HttpSession session){//Authentication
+		String email=(String)session.getAttribute("email");
+		if(email==null){
+		ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
+	return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+	}
+		
+		List<Job> activeJobs=jobDao.getActiveJobs();
+		return new ResponseEntity<List<Job>>(activeJobs,HttpStatus.OK);
+	}
+	@RequestMapping(value="/inactivejobs",method=RequestMethod.GET)
+	public ResponseEntity<?> getInActiveJobs(HttpSession session){//Authentication and Authorization
+String email=(String)session.getAttribute("email");
+		if(email==null){
+		ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
+		return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+
+	}
+		
+		User user=userDao.getUser(email);
+		if(!user.getRole().equals("ADMIN")){
+			ErrorClazz errorClazz=new ErrorClazz(8,"Access Denined.......");
+			return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+		}
+		List<Job> inactiveJobs=jobDao.getInActiveJobs();
+		return new ResponseEntity<List<Job>>(inactiveJobs,HttpStatus.OK);
+	}
+
+	
 }
