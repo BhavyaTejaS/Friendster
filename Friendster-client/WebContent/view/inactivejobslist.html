@@ -10,11 +10,20 @@ Jobs
 <b> Job Title: </b>{{job.jobTitle}}<br>
 <b>Skills Required: </b>{{job.skillsRequried}}<br>
 <b>Posted On: </b>{{job.postedOn | date:'medium'}}<br>
+
+<div ng-show="isClicked && job.id==id">
+					<b>Job Description:</b>{{job.jobDescription}}<br>
+					 <b>Salary:</b>{{job.salary}}<br>
+					<b>Location:</b>{{job.location}}<br>
+					 <b>Company Name:</b>{{job.companyName}}<br>
+					<b>Years Of Exp:</b>{{job. yrsofExp}}<br>
+					</div>
+					 
+			<a ng-click="showDetails()">Show more details</a>
 <hr>
 
 </li>
 
 </ul>
 
-</div>
 </div>

@@ -3,6 +3,7 @@
  */
 app.controller('JobCtrl',function($scope,JobService,$location,$rootScope){
 	$scope.addJob=function(job){
+		$scope.isClicked=false
 		JobService.addJob(job).then(
 				function(response){
 					alert('Job details inserted successfully')
@@ -38,6 +39,27 @@ app.controller('JobCtrl',function($scope,JobService,$location,$rootScope){
 				$location.path('/login')
 		})
 	}
+	$scope.showJobDetails=function(id){
+		$scope.id=id// for this job id ,show more details
+		$scope.isClicked=!$scope.isClicked;
+		//false->show more details->true->hide more details->false->show more details
+	}
+	$scope.deactivateJobPosition=function(job){
+		//change the value of the property active to false
+		job.active=false
+		JobService.updateActiveStatus(job).then(
+				function(response){
+					getActiveJobs()
+			
+		},
+		function(response){
+			$scope.error==response.data
+			if(response.status==401)
+				$location.path('/login')
+		})
+	}
+	
+	
 	getActiveJobs()
 	if($rootScope.loggedInUser.role=='ADMIN')
 		getInActiveJobs()

@@ -23,8 +23,6 @@ public class JobTestcase {
 	@Autowired
 	static JobDao jobDao;
 
-	@Autowired
-	static Job job;
 
 	@BeforeClass
 	public static void initialize() {

@@ -1,19 +1,31 @@
 <div class="panel panel-info">
-<div class="panel-heading">
-Jobs
-</div>
-<div class="panel-body">
-<ul style="list-style:none">
-<!-- -active Jobs is array of job object -->
-<li ng-repeat="job in activeJobs">
-<b> Job Title: </b>{{job.jobTitle}}<br>
-<b>Skills Required: </b>{{job.skillsRequried}}<br>
-<b>Posted On: </b>{{job.postedOn | date:'medium'}}<br>
-<hr>
+	<div class="panel-heading">Jobs</div>
+	<div class="panel-body">
+		<ul style="list-style: none">
+			<!-- -active Jobs is array of job object -->
+			<li ng-repeat="job in activeJobs">
+			<b> Job Title: </b>{{job.jobTitle}}<br>
+				<b>Skills Required: </b>{{job.skillsRequried}}<br> 
+				<b>Posted On: </b>{{job.postedOn | date:'medium'}}<br>
+				<div ng-show="isClicked && job.id==id">
+					<b>Job Description:</b>{{job.jobDescription}}<br>
+					 <b>Salary:</b>{{job.salary}}<br>
+					<b>Location:</b>{{job.location}}<br>
+					 <b>Company Name:</b>{{job.companyName}}<br>
+					<b>Years Of Exp:</b>{{job. yrsofExp}}<br>
 
-</li>
+				</div> <a ng-click="showJobDetails(job.id)"> 
+				<span ng-show="isClicked && job.id==id">Hide more details </span> 
+				<span ng-hide="isClicked && job.id==id">Show more details</span> <!-- --is Clicked && job.id==id is true,hide the text"show details " and show the text
+"hide more details" -->
+			</a> <br> <span ng-show="loggedInUser.role=='ADMIN'">
+					<button class="btn btn-danger"
+						ng-click="deactivateJobPosition(job)">Deactivate the job
+						Position</button>
+			</span>
+				<hr></li>
 
-</ul>
+		</ul>
 
-</div>
+	</div>
 </div>

@@ -91,6 +91,23 @@ String email=(String)session.getAttribute("email");
 		List<Job> inactiveJobs=jobDao.getInActiveJobs();
 		return new ResponseEntity<List<Job>>(inactiveJobs,HttpStatus.OK);
 	}
+	@RequestMapping(value="/updatejob",method=RequestMethod.PUT)
+public ResponseEntity<?> updateJob(HttpSession session,@RequestBody Job job){//job with updated active value
+	String email=(String)session.getAttribute("email");
+	if(email==null){
+	ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
+	return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
 
+}
+	
+	User user=userDao.getUser(email);
+	if(!user.getRole().equals("ADMIN")){
+		ErrorClazz errorClazz=new ErrorClazz(8,"Access Denined.......");
+		return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+	}
+	jobDao.updateJob(job);
+	return new ResponseEntity<Void>(HttpStatus.OK);
+	
+}
 	
 }

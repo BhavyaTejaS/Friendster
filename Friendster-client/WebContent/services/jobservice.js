@@ -12,6 +12,9 @@ app.factory('JobService',function($http){
 	jobService.getInActiveJobs=function(job){
 		return $http.get("http://localhost:8055/Friendster-middleware/inactivejobs")
 	}
+	jobService.updateActiveStatus=function(job){
+		return $http.put("http://localhost:8055/Friendster-middleware/updatejob",job)
+	}
 	return jobService;
 })
 	

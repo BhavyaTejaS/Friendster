@@ -13,3 +13,4 @@ public WebAppConfig(){
 	System.out.println("WebAppConfig class is instantiated");
 }
 }
+

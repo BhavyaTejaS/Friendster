@@ -9,5 +9,6 @@ void saveJob(Job job);
 List<Job> getActiveJobs();//Active is true,for other role
 //For admin get all jobs
 List<Job> getInActiveJobs();
+void updateJob(Job job);
 
 }

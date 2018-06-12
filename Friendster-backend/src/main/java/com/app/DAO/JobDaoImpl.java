@@ -33,5 +33,10 @@ private SessionFactory sessionFactory;
 		Query query=session.createQuery("from Job where active=false");
 		return query.list();
 	}
+	public void updateJob(Job job) {
+		Session session=sessionFactory.getCurrentSession();
+		session.update(job);
+		
+	}
 	
 }
