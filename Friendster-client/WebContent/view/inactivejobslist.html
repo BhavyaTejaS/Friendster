@@ -1,9 +1,8 @@
 <span style="color:red">{{error.message}}</span>
 <div class="panel panel-info">
-<div class="panel-heading">
-Jobs
-</div>
+<div class="panel-heading">InActive Jobs</div>
 <div class="panel-body">
+<h3><span ng-if="inActiveJobs.length==0">No InActiveJobs</span></h3>
 <ul style="list-style:none">
 <!-- -active Jobs is array of job object -->
 <li ng-repeat="job in inActiveJobs">
@@ -15,15 +14,19 @@ Jobs
 					<b>Job Description:</b>{{job.jobDescription}}<br>
 					 <b>Salary:</b>{{job.salary}}<br>
 					<b>Location:</b>{{job.location}}<br>
-					 <b>Company Name:</b>{{job.companyName}}<br>
-					<b>Years Of Exp:</b>{{job. yrsofExp}}<br>
+					 <b>Company Name:</b>{{job.companyName}}<br>			<b>Years Of Exp:</b>{{job. yrsofExp}}<br>
 					</div>
 					 
-			<a ng-click="showDetails()">Show more details</a>
+			<a ng-click="showJobDetails(job.id)">
+			<span ng-show="isClicked && job.id==id">Hide more details </span> 
+		    <span ng-hide="isClicked && job.id==id">Show more details</span>
+			</a> <br>
+<span ng-show="loggedInUser.role=='ADMIN'">
+					<button class="btn btn-danger"
+						ng-click="activateJobPosition(job)">Activate the job
+						Position</button>
+			</span>
 <hr>
-
 </li>
-
 </ul>
-
 </div>

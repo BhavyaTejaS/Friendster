@@ -58,7 +58,20 @@ app.controller('JobCtrl',function($scope,JobService,$location,$rootScope){
 				$location.path('/login')
 		})
 	}
-	
+	$scope.activateJobPosition=function(job){
+		//change the value of the property active to false
+		job.active=true
+		JobService.updateActiveStatus(job).then(
+				function(response){
+					getInActiveJobs()
+			
+		},
+		function(response){
+			$scope.error==response.data
+			if(response.status==401)
+				$location.path('/login')
+		})
+	}
 	
 	getActiveJobs()
 	if($rootScope.loggedInUser.role=='ADMIN')
