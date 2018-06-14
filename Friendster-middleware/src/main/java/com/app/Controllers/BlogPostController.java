@@ -1,6 +1,7 @@
 package com.app.Controllers;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -41,5 +42,34 @@ blogPost.setPostedBy(postedBy);
 blogPostDao.saveBlogPost(blogPost);
 return new ResponseEntity<BlogPost>(blogPost,HttpStatus.OK);
 
-}
+} 
+	@RequestMapping(value="/blogsapproved",method=RequestMethod.GET)
+	public ResponseEntity<?> getBlogsApproved(HttpSession session){
+		String email=(String)session.getAttribute("email");
+		if(email==null){
+			ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
+			return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+
+	  }
+		List<BlogPost> blogsApproved=blogPostDao.approvedBlogs();
+		return new ResponseEntity<List<BlogPost>>(blogsApproved,HttpStatus.OK);
+	} 
+	@RequestMapping(value="/blogswaitingforappoval",method=RequestMethod.GET)
+	public ResponseEntity<?> getBlogsWaitingForApproval(HttpSession session){
+		
+		String email=(String)session.getAttribute("email");
+		if(email==null){
+			ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
+			return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+
+	  }
+		User user=userDao.getUser(email);
+		if(email==null){
+			ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
+			return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+		}
+		List<BlogPost> blogWaitingForApproval=blogPostDao.blogWaitingForApproval();
+		
+		return new ResponseEntity<List<BlogPost>>(blogWaitingForApproval,HttpStatus.OK);
+	}
 }

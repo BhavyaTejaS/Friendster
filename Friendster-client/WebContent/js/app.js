@@ -29,10 +29,19 @@ app.config(function($routeProvider){
 		controller:'JobCtrl',
 		templateUrl:'view/activejobslist.html' 
 	})
-	.when('/inactivejobs',{
-		controller:'JobCtrl',
-		templateUrl:'view/inactivejobslist.html' 
+	.when('/addblog',{
+		controller:'BlogCtrl',
+		templateUrl:'view/blogform.html' 
 	})
+	.when('/blogsapproved',{
+		controller:'BlogCtrl',
+		templateUrl:'view/blogs.html' 
+	})
+	.when('/blogswaitingforapproval',{
+		controller:'BlogCtrl',
+		templateUrl:'view/blogs.html' 
+	})
+	
 	.otherwise({
 		templateUrl:'view/home.html'
 	})
