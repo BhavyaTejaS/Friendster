@@ -11,10 +11,16 @@ app.factory('BlogService',function($http){
 		return $http.get("http://localhost:8055/Friendster-middleware/blogsapproved")
 		
 	}
-	blogService.blogswaitingforapproval=function(){
+	blogService.blogsWaitingForApproval=function(){
 		return $http.get("http://localhost:8055/Friendster-middleware/blogswaitingforapproval")
 		
 	}
+	blogService.getBlogPost=function(id){
+		return $http.get("http://localhost:8055/Friendster-middleware/getblogpost/"+id)
+	}
+	blogService.updateApprovalStatus=function(blogPost){
+		return $http.put("http://localhost:8055/Friendster-middleware/updatestatusapproval",blogPost)
+	}
 	
 	return blogService;
-})
+}) 

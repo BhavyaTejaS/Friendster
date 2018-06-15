@@ -7,5 +7,6 @@ import com.app.Models.BlogPost;
 public interface BlogPostDao {
 	void saveBlogPost(BlogPost blogPost);
 List<BlogPost> approvedBlogs();
-List<BlogPost> blogWaitingForApproval();
+List<BlogPost> blogsWaitingForApproval();
+BlogPost getBlogPost(int id);
 }

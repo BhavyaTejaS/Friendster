@@ -31,11 +31,17 @@ public class BlogPostDaoImpl implements BlogPostDao {
 		return  query.list();//List of blogpost objects which are approved
 	}
 
-	public List<BlogPost> blogWaitingForApproval() {
+	public List<BlogPost> blogsWaitingForApproval() {
 Session session=sessionFactory.getCurrentSession();
 		
 		Query query=session.createQuery("from BlogPost where approved=false");
 		return  query.list();
+	}
+
+	public BlogPost getBlogPost(int id) {
+		Session session=sessionFactory.getCurrentSession();
+		BlogPost blogPost=(BlogPost)session.get(BlogPost.class,id);
+		return blogPost;
 	}
 
 }

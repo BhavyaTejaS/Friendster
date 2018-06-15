@@ -29,23 +29,36 @@ app.config(function($routeProvider){
 		controller:'JobCtrl',
 		templateUrl:'view/activejobslist.html' 
 	})
+	.when('/inactivejobs',{
+		controller:'JobCtrl',
+		templateUrl:'view/inactivejobslist.html' 
+	})
 	.when('/addblog',{
 		controller:'BlogCtrl',
 		templateUrl:'view/blogform.html' 
 	})
 	.when('/blogsapproved',{
 		controller:'BlogCtrl',
-		templateUrl:'view/blogs.html' 
+		templateUrl:'view/blogsapproved.html' 
 	})
 	.when('/blogswaitingforapproval',{
 		controller:'BlogCtrl',
-		templateUrl:'view/blogs.html' 
+		templateUrl:'view/blogswaitingforapproval.html' 
+	})
+	.when('/getblogapproved/:id',{
+		controller:'BlogInDetailCtrl',
+		templateUrl:'view/blogindetail.html' 
+	})
+	.when('/getblogwaitingforapproval/:id',{
+		controller:'BlogInDetailCtrl',
+		templateUrl:'view/blogapprovalform.html' 
 	})
 	
-	.otherwise({
+	
+	.otherwise({  
 		templateUrl:'view/home.html'
 	})
-})
+ })
 app.run(function($rootScope,$cookieStore,UserService,$location){
 	if($rootScope.loggedInUser==undefined)
 		$rootScope.loggedInUser=$cookieStore.get('loggedInUser')
