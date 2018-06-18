@@ -44,4 +44,15 @@ Session session=sessionFactory.getCurrentSession();
 		return blogPost;
 	}
 
+	public void updateApprovalStatus(BlogPost blogPost) {
+		Session session=sessionFactory.getCurrentSession();
+		if(blogPost.isApproved()){
+			session.update(blogPost);
+		}
+		else{
+			session.delete(blogPost);
+			
+		}
+	}
+
 }

@@ -83,4 +83,26 @@ return new ResponseEntity<BlogPost>(blogPost,HttpStatus.OK);
 		BlogPost blogPost=blogPostDao.getBlogPost(id);
 		return new ResponseEntity<BlogPost>(blogPost,HttpStatus.OK);
 	}
-}
+	@RequestMapping(value="/updatestatusapproval",method=RequestMethod.PUT)
+		public ResponseEntity<?> updateApprovalStatus(@RequestBody BlogPost blogPost,HttpSession session){
+			String email=(String)session.getAttribute("email");
+			if(email==null){
+				ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
+				return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+
+		  }
+			User user=userDao.getUser(email);
+			if(!user.getRole().equals("ADMIN")){
+				ErrorClazz errorClazz=new ErrorClazz(8,"Access Denined......");
+				return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+			}
+			try{
+			blogPostDao.updateApprovalStatus(blogPost);
+			}catch(Exception e){
+				ErrorClazz errorClazz=new ErrorClazz(10,"Unable to approve/reject the blogpost"+e.getMessage());
+				return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+			return new ResponseEntity<Void>(HttpStatus.OK);
+		}
+		
+	}
