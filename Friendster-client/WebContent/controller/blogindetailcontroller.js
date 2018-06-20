@@ -13,6 +13,18 @@ app.controller('BlogInDetailCtrl',function($scope,$location,BlogService,$rootSco
 			$location.path('/login')
 
 	})
+	BlogService.hasUserLikedBlog(id).then(function(response){
+		if(response.data=='')
+			 $scope.isLiked=false
+			 else
+				 $scope.isLiked=true 
+			
+	},function(response){
+		$scope.error==response.data
+		if(response.status==401)
+			$location.path('/login')
+	})  
+	
 	$scope.approve=function(blogPost){
 		blogPost.approved=true
 		BlogService.updateApprovalStatus(blogPost).then(function(response){
@@ -35,4 +47,16 @@ app.controller('BlogInDetailCtrl',function($scope,$location,BlogService,$rootSco
 		})
 		
 	}
+	$scope.updateBlogPostLikes=function(blogPostId){
+		BlogService.updateBlogPostLikes(blogPostId).then(function(reponse){
+			
+			$scope.blogPost==response.data
+               $scope.isLiked=!$scope.isLiked;
+		},function(response){
+			$scope.error==response.data
+			if(response.status==401)
+				$location.path('/login')
+		})
+	}
+	
 })

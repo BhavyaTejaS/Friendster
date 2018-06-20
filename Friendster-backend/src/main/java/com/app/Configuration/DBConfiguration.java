@@ -12,7 +12,9 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.app.Models.BlogComment;
 import com.app.Models.BlogPost;
+import com.app.Models.BlogPostLikes;
 import com.app.Models.Job;
 import com.app.Models.User;
 
@@ -34,7 +36,7 @@ public class DBConfiguration {
 		hibernateProperties.setProperty("hibernate.format_sql", "true");
 		
 		lsf.addProperties(hibernateProperties);
-		Class classes[]=new Class[]{User.class,Job.class,BlogPost.class};//class objects of all entities
+		Class classes[]=new Class[]{User.class,Job.class,BlogPost.class,BlogPostLikes.class,BlogComment.class};//class objects of all entities
 	    return lsf.addAnnotatedClasses(classes).buildSessionFactory();
 	}
 	@Bean

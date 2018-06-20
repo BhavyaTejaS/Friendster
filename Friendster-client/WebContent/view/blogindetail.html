@@ -10,5 +10,13 @@
 <p ng-bind-html="content"></p>
 
 </div>
-{{blogPost.likes}}  likes
+{{isLiked}}
+<a ng-click="updateBlogPostLikes(blogPost.id)"> <span class="glyphicon glyphicon-thumbs-up" ng-class="isLiked?'liked':'default:'"  ></span></a>
+{{blogPost.likes}}  likes<br>
+<div>
+<textarea rows="4" cols="20" ng-model="commentTxt"></textarea>
+<button class="btn btn-primary" ng-click="addComment()">Post Comment</button>
+
+</div>
+
 </div>

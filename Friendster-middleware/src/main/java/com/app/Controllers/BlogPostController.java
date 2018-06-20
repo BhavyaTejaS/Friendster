@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.DAO.BlogPostDao;
+import com.app.DAO.BlogPostLikesDao;
 import com.app.DAO.UserDao;
 import com.app.Models.BlogPost;
+import com.app.Models.BlogPostLikes;
 import com.app.Models.ErrorClazz;
 import com.app.Models.User;
 
@@ -26,6 +28,8 @@ public class BlogPostController {
 	private BlogPostDao blogPostDao;
 	@Autowired
 	private UserDao userDao;
+	@Autowired
+	private BlogPostLikesDao blogPostLikesDao;
 	//{blogTitle:'Introduction to DBMS',blogContent:'--------------'}
 	@RequestMapping(value="/addblogpost",method=RequestMethod.POST)
 	   public ResponseEntity<?> saveBlogPost(HttpSession session,@RequestBody BlogPost blogPost){//Authentication And Authorization
@@ -83,6 +87,7 @@ return new ResponseEntity<BlogPost>(blogPost,HttpStatus.OK);
 		BlogPost blogPost=blogPostDao.getBlogPost(id);
 		return new ResponseEntity<BlogPost>(blogPost,HttpStatus.OK);
 	}
+	
 	@RequestMapping(value="/updatestatusapproval",method=RequestMethod.PUT)
 		public ResponseEntity<?> updateApprovalStatus(@RequestBody BlogPost blogPost,HttpSession session){
 			String email=(String)session.getAttribute("email");
@@ -104,5 +109,29 @@ return new ResponseEntity<BlogPost>(blogPost,HttpStatus.OK);
 			}
 			return new ResponseEntity<Void>(HttpStatus.OK);
 		}
+	@RequestMapping(value="/hasuserlikedblog/{blogPostId}",method=RequestMethod.GET)
+	public ResponseEntity<?> hasUserLikedBlogPost(@PathVariable int blogPostId,HttpSession session){
+		String email=(String)session.getAttribute("email");
+		if(email==null){
+			ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
+		return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+
+	 }
+
+		BlogPostLikes blogPostLikes=blogPostLikesDao.hasUserLikedBlogPost(blogPostId, email);
+		return new ResponseEntity<BlogPostLikes>(blogPostLikes,HttpStatus.OK);
+	}
+	@RequestMapping(value="/updateblogpostlikes/{blogPostId}",method=RequestMethod.PUT)
+	public ResponseEntity<?> updateBlogPostLikes(@PathVariable int blogPostId,HttpSession session){
+		String email=(String)session.getAttribute("email");
+		if(email==null){
+			ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
+		return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+
+	 }
+		BlogPost blogPost=blogPostLikesDao.updateBlogPostLikes(blogPostId,email);
 		
+		return new ResponseEntity<BlogPost>(blogPost,HttpStatus.OK);
+		
+	}
 	}
