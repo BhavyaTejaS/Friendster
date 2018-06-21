@@ -4,6 +4,7 @@
 app.controller('BlogInDetailCtrl',function($scope,$location,BlogService,$rootScope,$routeParams,$sce){
 	
 	var id=$routeParams.id
+	$scope.showCommentsIsClicked=false;
 	BlogService.getBlogPost(id).then(function(response){
 		$scope.blogPost=response.data
 		$scope.content=$sce.trustAsHtml($scope.blogPost.blogContent)
@@ -58,5 +59,31 @@ app.controller('BlogInDetailCtrl',function($scope,$location,BlogService,$rootSco
 				$location.path('/login')
 		})
 	}
+		$scope.addComment=function(){
+			BlogService.addComment($scope.commentTxt,id).then(
+					function(response){
+				getAllBlogComments()
+				$scope.commentTxt=''
+			},function(response){
+				$scope.error==response.data
+				if(response.status==401)
+					$location.path('/login')
+			})
+			
+		}
+		function getAllBlogComments(){
+			BlogService.getAllBlogComments(id).then(function(response){
+				$scope.blogComments=response.data
+			},function(response){
+				$scope.error==response.data
+				if(response.status==401)
+					$location.path('/login')
+			})
+			
+		}
+		$scope.showComments=function(){
+			$scope.showCommentsIsClicked=!$scope.showCommentsIsClicked
+		}
+	getAllBlogComments()
 	
 })

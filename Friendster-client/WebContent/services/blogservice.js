@@ -27,5 +27,11 @@ app.factory('BlogService',function($http){
 	blogService.updateBlogPostLikes=function(blogPostId){
 		return $http.put("http://localhost:8087/Friendster-middleware/updateblogpostlikes/"+blogPostId)
 	}
+	blogService.addComment=function(commentTxt,id){
+		return $http.post("http://localhost:8087/Friendster-middleware/addcomment/"+commentTxt+"/"+id)
+	}
+	blogService.getAllBlogComments=function(blogPostId){
+		return $http.get("http://localhost:8087/Friendster-middleware/getblogcomments/"+blogPostId)
+	}
 	return blogService;
 }) 
