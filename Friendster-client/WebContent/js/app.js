@@ -57,6 +57,10 @@ app.config(function($routeProvider){
 		templateUrl:'view/uploadprofilepic.html'
 	})
 	
+	.when('/suggestedusers',{
+		controller:'FriendCtrl',
+		templateUrl:'view/friendsuggestions.html' 
+	})
 	.otherwise({  
 		templateUrl:'view/home.html'
 	})

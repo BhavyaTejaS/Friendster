@@ -20,4 +20,3 @@ public CommonsMultipartResolver getCommonsMultipartResolver() {
 	return new CommonsMultipartResolver();
 }
 }
-

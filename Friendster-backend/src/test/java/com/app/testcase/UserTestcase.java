@@ -47,10 +47,10 @@ public class UserTestcase {
 		
 
 		
-		user.setFirstname("srihari");
+		user.setFirstname("srihari1");
 		user.setLastname("sri");
-		user.setEmail("srihari@gmail.com");
-		user.setPassword("srihari");
+		user.setEmail("srihari1@gmail.com");
+		user.setPassword("srihari1");
 		user.setPhonenumber("999789756");
 		user.setRole("Student");
 		

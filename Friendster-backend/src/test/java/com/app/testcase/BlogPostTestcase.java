@@ -10,21 +10,21 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.app.DAO.JobDao;
-import com.app.DAO.UserDao;
-import com.app.Models.Job;
+import com.app.DAO.BlogPostDao;
+import com.app.Models.BlogPost;
 import com.app.Models.User;
 
-public class JobTestcase {
+
+public class BlogPostTestcase {
 
 	@Autowired
 	static AnnotationConfigApplicationContext context;
 
 	@Autowired
-	static JobDao jobDao;
+	static BlogPostDao blogPostDao;
 
 	@Autowired
-	static Job job;
+	static BlogPost blogPost;
 
 	
 	@BeforeClass
@@ -34,24 +34,27 @@ public class JobTestcase {
 		context.refresh();
 
 		// get the productDAO from context
-		jobDao = (JobDao) context.getBean("jobDao");
+		blogPostDao = (BlogPostDao) context.getBean("blogPostDao");
 
 	}
 
 	
 	@Test
 	public void CreateJobTestCase() {
-		 job = new Job();
+		blogPost = new BlogPost();
 
-		job.setJobTitle("DataBase Operation");
-		job.setJobDescription("backend operation");
-		job.setLocation("Hyderabad");
-		job.setSalary("15k-22k");
-		job.setSkillsRequried("basic knowledge on SQL");
-		job.setYrsofExp("Fresher");
-		jobDao.saveJob(job);
-		assertEquals(job.getId(), job.getId());
+		blogPost.setBlogTitle("CSS2");
+		blogPost.setBlogContent("The Latest version of CSS is CSS2");
+		String s="admin@abc.com";
+		User obj=new User();
+		obj.setEmail(s);
+		blogPost.setPostedBy(obj);
+		
+blogPost.setPostedOn(new java.util.Date());
+
+		blogPostDao.saveBlogPost(blogPost);
+		
+		assertEquals(blogPost.getId(), blogPost.getId());
 
 	}
-
 }

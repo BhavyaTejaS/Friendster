@@ -1,0 +1,25 @@
+/**
+ * 
+ */
+app.controller('FriendCtrl',function($scope,$location,FriendService){
+	function getSuggestedUsers(){
+		FriendService.getSuggestedUsers().then(function(response){
+			$scope.suggestedUsers=response.data
+		},function(response){
+			$scope.error==response.data
+			if(response.status==401)
+				$location.path('/login')
+		})
+	}
+getSuggestedUsers()
+$scope.sendFriendRequest=function(toIdValue){
+	FriendService.sendFriendRequest(toIdValue).then(function(response){
+		alert('Friend Request has been send successfully..... ')
+		getSuggestedUsers()
+	},function(response){
+		$scope.error==response.data
+		if(response.status==401)
+			$location.path('/login')
+	})
+}
+})

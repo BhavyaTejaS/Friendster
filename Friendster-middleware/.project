@@ -3,6 +3,7 @@
 	<name>Friendster-middleware</name>
 	<comment></comment>
 	<projects>
+		<project>Friendster-client</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

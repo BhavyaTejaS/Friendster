@@ -38,9 +38,10 @@ public class BlogPostController {
 		String email=(String)session.getAttribute("email");
 		if(email==null){
 			ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
-			return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+		return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
 
-	  }
+	 }
+	
 		blogPost.setPostedOn(new Date());
 		//postedBy-author,logged in user
 User postedBy=userDao.getUser(email);
@@ -81,10 +82,11 @@ return new ResponseEntity<BlogPost>(blogPost,HttpStatus.OK);
 	@RequestMapping(value="/getblogpost/{id}",method=RequestMethod.GET)
 	public ResponseEntity<?> getBlogPost(@PathVariable int id,HttpSession session){
 		String email=(String)session.getAttribute("email");
-		if(email==null){
+	if(email==null){
 			ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
 			return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
 	}
+		
 		BlogPost blogPost=blogPostDao.getBlogPost(id);
 		return new ResponseEntity<BlogPost>(blogPost,HttpStatus.OK);
 	}

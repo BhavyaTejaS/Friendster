@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.app.Models.BlogComment;
 import com.app.Models.BlogPost;
-@Repository
+@Repository("blogPostDao")
 @Transactional
 
 

@@ -4,15 +4,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Friend-S180396")
+@Table(name="Friend_S180396")
 public class Friend {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 private int Id;
+	@ManyToOne
 private User fromId;
+	@ManyToOne
 private User toId;
 private char Status;
 public int getId() {
