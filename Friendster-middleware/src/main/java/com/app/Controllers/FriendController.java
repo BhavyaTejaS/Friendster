@@ -52,4 +52,26 @@ return new ResponseEntity<List<User>>(suggestedUsers,HttpStatus.OK);
 		
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
+	@RequestMapping(value="/pendingrequests",method=RequestMethod.GET)
+ 	public ResponseEntity<?> getPendingRequests(HttpSession session){
+		String email=(String)session.getAttribute("email"); 
+		if(email==null){
+			ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
+		return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+		}
+		
+		List<Friend> pendingRequests=friendDao.pendingRequests(email);
+		return new ResponseEntity<List<Friend>>(pendingRequests,HttpStatus.OK);
+	}
+	@RequestMapping(value="/updatestatus",method=RequestMethod.PUT)
+	public ResponseEntity<?> updateStatus(@RequestBody Friend friendRequest,HttpSession session){
+		String email=(String)session.getAttribute("email"); 
+		if(email==null){
+			ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
+		return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+		}
+		friendDao.updateStatus(friendRequest);
+		return new ResponseEntity<Void>(HttpStatus.OK);
+		
+	}
 }

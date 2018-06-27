@@ -1,0 +1,25 @@
+<div>
+<div class="panel panel-default">
+
+<div class="panel panel-heading">
+Pending Requests
+</div>
+<div class="panel-body">
+<span ng-if="pendingRequests.length==0">No Pending Requests</span>
+<ul style="list-style:none">
+<li ng-repeat="friendRequest in pendingRequests">
+{{friendRequest.fromId.email}}<br>
+{{friendRequest.fromId.firstname}} &nbsp; {{friendRequest.fromId.lastname}}<br>
+{{friendRequest.fromId.role}}<br>
+<img src="http://localhost:8087/Friendster-middleware/getimage/{{friendRequest.fromId.email}}" alt="image not available" width="70px" height="70px" class="img-rounded"><br>
+<br>
+<button class="btn btn-primary" ng-click="updateStatus(friendRequest,'A')">Accept the Request</button>
+<button class="btn btn-danger" ng-click="updateStatus(friendRequest,'D')">Delete the Request</button>
+<hr>
+</li>
+</ul>
+
+</div>
+</div>
+
+</div>
