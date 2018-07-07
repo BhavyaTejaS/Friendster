@@ -21,6 +21,10 @@ import com.app.Models.User;
 
 @RestController
 public class FriendController {
+	public FriendController(){
+		System.out.println("Friend Controller bean is created");
+	}
+	
 	@Autowired
 	private FriendDao friendDao;
 	@Autowired
@@ -74,4 +78,5 @@ return new ResponseEntity<List<User>>(suggestedUsers,HttpStatus.OK);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 		
 	}
+	
 }

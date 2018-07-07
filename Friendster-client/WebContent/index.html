@@ -16,6 +16,9 @@
 	rel="stylesheet" />
 <link rel="stylesheet" href="http://localhost:8087/Friendster-client/resources/css/glyphiconcolor.css">
 
+<link rel="stylesheet" href="http://localhost:8087/Friendster-client/resources/css/footer.css">
+
+
  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
      
    
@@ -62,7 +65,7 @@
                 <div class="navbar-header" id="img">
                     <a class="navbar-brand" href="#/">
                     <a href="resources/images/friend.png" target="_blank">
-<img src="resources/images/friend.png" width="130" height="50" style="border:2px solid black">
+<img src="resources/images/friend.png" width="130" height="60" style="border:2px solid black">
 </a>
                 </div>
 <div class="collapse navbar-collapse" id="collapse-example">
@@ -89,6 +92,7 @@
              <ul class="dropdown-menu">
              <li><a href="#/suggestedusers">Friend Suggestions</a></li>
               <li><a href="#/pendingrequests">Pending Requests </a></li>
+              <li><a href="#/friends">Friends</a></li>
             
              </ul></li>
              
@@ -97,7 +101,7 @@
               <li><a href="#/uploadprofilepic" ng-show="loggedInUser.firstname">
                     <img src="http://localhost:8087/Friendster-middleware/getimage/{{loggedInUser.email}}" alt="upload" width="30px" height="30px" class="img-rounded">
                     </a></li>
-             
+               <li><a href="#/chat" ng-show="loggedInUser.firstname">Chat Room </a></li>
            <li><a href="#/updateprofile" ng-show="loggedInUser.firstname!=undefined">Welcome {{loggedInUser.firstname}} &nbsp; {{loggedInUser.lastname}}</a></li>
            <li><a href="" ng-click="logout()" ng-show="loggedInUser.firstname!=undefined">Sign out</a></li>
            <li><a href="#/registration" ng-show="loggedInUser.firstname==undefined">Sign Up</a></li>
@@ -108,10 +112,10 @@
 </div>
 </div>
 </nav>
+
 </header>
 
 <div ng-view></div>
-
 </body>
 <script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
@@ -130,4 +134,12 @@
 
 <script type="text/javascript" src="services/friendservice.js"></script>
 <script type="text/javascript" src="controller/friendcontroller.js"></script>
+  <script type="text/javascript" src="services/chatservice.js"></script>
+<script type="text/javascript" src="controller/chatcontroller.js"></script>
+
+<script type="text/javascript" src="js/sockjs/sockjs.min.js"></script>
+	<script type="text/javascript" src="js/stomp/dist/stomp.min.js"></script>
+
+<br>
+
 </html>

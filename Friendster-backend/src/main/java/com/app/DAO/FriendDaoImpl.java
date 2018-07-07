@@ -57,5 +57,6 @@ public class FriendDaoImpl implements FriendDao {
 		if(friendRequest.getStatus()=='D')
 			session.delete(friendRequest);
 	}
+	
 
 }

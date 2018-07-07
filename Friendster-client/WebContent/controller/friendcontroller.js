@@ -46,4 +46,14 @@ FriendService.updateStatus(friendRequest).then(
 	})
 	
 }
+function getAllFriends(){
+	FriendService.getAllFriends().then(function(response){
+		$scope.friends=response.data
+	},function(response){
+		$scope.error==response.data
+		if(response.status==401)
+			$location.path('/login')
+	})
+}
+getAllFriends()
 })

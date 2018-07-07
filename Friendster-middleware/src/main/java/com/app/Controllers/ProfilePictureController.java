@@ -20,6 +20,9 @@ import com.app.Models.User;
 
 @Controller
 public class ProfilePictureController {
+	public ProfilePictureController(){
+		System.out.println("ProfilePictureController bean is created");
+	}
 @Autowired
 private ProfilePictureDao profilePictureDao;
 	@RequestMapping(value="/uploadprofilepic",method=RequestMethod.POST)

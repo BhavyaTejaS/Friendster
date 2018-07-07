@@ -1,45 +1,53 @@
+
+<h2 style="color: #47d147" align="center">Sign Up</h2>
+
+<link rel="stylesheet" href="http://localhost:8087/Friendster-client/resources/css/registration.css">
+<div class="registration" id="register-box">
 <table>
 	<tr>
-		<td>Enter email </td>
-		<td><input type="email" ng-model="user.email">
-		<span style="color:red">{{error.message}}</span>
+		<td>Enter Email: </td>
+		<td><input type="email" ng-model="user.email" required>
+	<br><br>	
 		</td>
 	</tr>
 
 	<tr>
-		<td>Enter password</td>
-		<td><input type="password" ng-model="user.password" required></td>
+		<td>Enter Password:</td>
+		<td><input type="password" ng-model="user.password" required>
+		<br><br>
+		</td>
 	</tr>
 
 	<tr>
-		<td>Enter Firstname</td>
-		<td><input type="text" ng-model="user.firstname" required></td>
+			<td>Enter FirstName:</td>
+		<td><input type="text" ng-model="user.firstname" required><br><br></td>
 	</tr>
 
 	<tr>
-		<td>Enter Lastname</td>
-		<td><input type="text" ng-model="user.lastname"></td>
+		<td>Enter LastName:</td>
+		<td><input type="text" ng-model="user.lastname"><br><br></td>
 	</tr>
 
 	<tr>
-		<td>Enter Phonenumber</td>
-		<td><input type="phonenumber" ng-model="user.phonenumber"></td>
+		<td>Enter Phonenumber:</td>
+		<td><input type="phonenumber" ng-model="user.phonenumber"><br><br></td>
 	</tr>
 
 	<tr>
-		<td>Select Role</td>
+		<td>Select Role:</td>
 		<td>
 		<select ng-model="user.role">
 		<option value="STUDENT">Student
 		<option value="EMPLOYEE">Employee
 		<option value="ALUMNI">Alumni 
 		</select>
+		<br><br>
 		</td>
 		
 	</tr>
     <tr>
     <td><input type="submit" value="Register" ng-click="register(user)"></td>
-    </tr>
+   </tr>
     
 </table>
-
+</div>

@@ -19,5 +19,9 @@ app.factory('FriendService',function($http){
 	friendService.updateStatus=function(updatedFriendRequest){
 		return $http.put("http://localhost:8087/Friendster-middleware/updatestatus",updatedFriendRequest);
 	}
+	friendService.getAllFriends=function(){
+		return $http.get("http://localhost:8087/Friendster-middleware/friends");
+	}
+	
 	return friendService;
 })

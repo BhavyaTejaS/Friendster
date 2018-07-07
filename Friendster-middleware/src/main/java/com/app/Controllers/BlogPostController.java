@@ -25,6 +25,9 @@ import com.app.Models.User;
 
 @RestController
 public class BlogPostController {
+	public BlogPostController(){
+		System.out.println("BlogPost Controller bean is created");
+	}
 	@Autowired
 	private BlogPostDao blogPostDao;
 	@Autowired

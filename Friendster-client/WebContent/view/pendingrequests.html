@@ -8,9 +8,9 @@ Pending Requests
 <span ng-if="pendingRequests.length==0">No Pending Requests</span>
 <ul style="list-style:none">
 <li ng-repeat="friendRequest in pendingRequests">
-{{friendRequest.fromId.email}}<br>
-{{friendRequest.fromId.firstname}} &nbsp; {{friendRequest.fromId.lastname}}<br>
-{{friendRequest.fromId.role}}<br>
+<b>EMAIL:</b>{{friendRequest.fromId.email}}<br>
+<b>NAME:</b>{{friendRequest.fromId.firstname}} &nbsp; {{friendRequest.fromId.lastname}}<br>
+<b>ROLE</b>{{friendRequest.fromId.role}}<br>
 <img src="http://localhost:8087/Friendster-middleware/getimage/{{friendRequest.fromId.email}}" alt="image not available" width="70px" height="70px" class="img-rounded"><br>
 <br>
 <button class="btn btn-primary" ng-click="updateStatus(friendRequest,'A')">Accept the Request</button>
@@ -19,7 +19,9 @@ Pending Requests
 </li>
 </ul>
 
+
 </div>
 </div>
 
 </div>
+<br><br><br><br><br><br><br><br><br><br>

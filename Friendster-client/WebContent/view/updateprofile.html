@@ -1,29 +1,41 @@
+<h2 style="color: #47d147" align="center">Update</h2>
+
+<link rel="stylesheet" href="http://localhost:8087/Friendster-client/resources/css/update.css">
+<div class="update" id="update-box">
 <table>
 	<tr>
 		<td>Enter email </td>
 		<td><input type="email" ng-model="loggedInUser.email" disabled>
-		<span style="color:red">{{error.message}}</span>
+		<br><br>
 		</td>
 	</tr>
 
 	<tr>
 		<td>Enter password</td>
-		<td><input type="password" ng-model="loggedInUser.password" required></td>
+		<td><input type="password" ng-model="loggedInUser.password" required>
+		<br><br>
+		</td>
 	</tr>
 
 	<tr>
 		<td>Enter Firstname</td>
-		<td><input type="text" ng-model="loggedInUser.firstname" required></td>
+		<td><input type="text" ng-model="loggedInUser.firstname" required>
+		<br><br>
+		</td>
 	</tr>
 
 	<tr>
 		<td>Enter Lastname</td>
-		<td><input type="text" ng-model="loggedInUser.lastname"></td>
+		<td><input type="text" ng-model="loggedInUser.lastname">
+		<br><br>
+		</td>
 	</tr>
 
 	<tr>
 		<td>Enter Phonenumber</td>
-		<td><input type="text" ng-model="loggedInUser.phonenumber"></td>
+		<td><input type="text" ng-model="loggedInUser.phonenumber">
+		<br><br>
+		</td>
 	</tr>
 
 	<tr>
@@ -34,11 +46,14 @@
 		<option value="EMPLOYEE">Employee
 		<option value="ALUMNI">Alumni 
 		</select>
+		<br><br>
 		</td>
 		
 	</tr>
     <tr>
-    <td><input type="submit" value="Edit" ng-click="updateProfile(loggedInUser)"></td>
+    <td><input type="submit" value="Edit" ng-click="updateProfile(loggedInUser)">
+    <br><br>
+    </td>
     </tr>
     
 </table>

@@ -14,4 +14,5 @@ void updateApprovalStatus(BlogPost blogPost);
 void addBlogComment(BlogComment blogComment);
 List<BlogComment> getAllBlogComments(int blogPostId);
 
+
 }
